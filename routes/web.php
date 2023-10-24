@@ -23,6 +23,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/memo/create', [MemoController::class, 'create'])->name('memo.create');
     Route::post('/memo/store', [MemoController::class, 'store'])->name('memo.store');
     Route::delete('/memo/{id}', [MemoController::class, 'destroy'])->name('memo.destroy');
+    Route::get('/memo/{memo}/edit', [MemoController::class, 'edit'])->name('memo.edit');
+    Route::put('/memo/{memo}', [MemoController::class, 'update'])->name('memo.update');
 
     // Rute untuk logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

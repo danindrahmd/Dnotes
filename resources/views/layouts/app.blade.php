@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your App Title</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <!-- Other styles or scripts you may include -->
+    @vite('resources/css/app.css')
 </head>
 <body>
 
