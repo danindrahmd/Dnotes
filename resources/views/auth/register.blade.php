@@ -50,6 +50,8 @@
 
             <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded">Register</button>
         </form>
+
+        <p class="mt-4 text-sm">Already have an account? <a href="{{ route('login') }}" class="text-blue-500">Back to Login</a></p>
     </div>
 
     <script src="{{ mix('js/app.js') }}"></script>
