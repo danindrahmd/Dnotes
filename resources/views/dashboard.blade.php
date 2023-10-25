@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{--                 <img src="{{ asset('assets/dnotes.png') }}" alt="Memo App Logo" class="w-8 h-8 mr-2"> --}} 
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @vite('resources/css/app.css')
