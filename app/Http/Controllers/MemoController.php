@@ -34,7 +34,30 @@ class MemoController extends Controller
     {
         $memo = Memo::findOrFail($id);
         $memo->delete();
+    
 
         return redirect()->route('dashboard')->with('success', 'Memo deleted successfully!');
+    }
+    
+    public function edit(Memo $memo)
+    {
+        return view('memos.edit', compact('memo'));
+    }
+
+    public function update(Request $request, Memo $memo)
+    {
+        // Validation rules
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
+
+        // Update the memo
+        $memo->update([
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+        ]);
+
+        return redirect()->route('dashboard')->with('success', 'Memo updated successfully!');
     }
 }
