@@ -1,3 +1,40 @@
+
+
+
+
+## About This Project
+This project focus is to create a simple application that will be used to store memo created by user. Feature of this app is to create a memo, edit the memo, and delete the expected memo. 
+
+## Requirement
+There are several requirement that must fulfilled for this project expected to be completed, such as: 
+
+1. The web must capable to have authentication method applied. 
+2. The website have forms and requests method applied 
+3. Databases and seeders method was implemented in the website.
+4. Implementation of CRUD (Create, Read, Update, Delete).
+
+## Fulfilled Requirement
+1. The landing page of the website itself was login / registration, which means only authenticated user was only allowed to acces this website, otherwise they need to register through the link provided.
+2. The website have registration form that will store user authenticated data and use such data as login requirement.
+3. The database was provided to store each and every memo user created. Seeders was applied when user first enter the website, they can see how to enter new memo based on the provided seeders content.
+4. CRUD implementation consist of:
+ - Creating the memo
+ - Read the memo in the dashboard
+ - Edit button was provided to update the content of the memo
+ - Delete button was provided to delete any memo 
+
+## Conclussion
+This project considered fulfilled each requirement provided, and the creation of this project by utilizing Laravel method provided.
+
+<!-- For your midterms, you can start by "reviewing how to do CRUD in Laravel"
+
+The tasks on the midterms will cover : -->
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
