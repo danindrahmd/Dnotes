@@ -84,17 +84,19 @@
                 <p class="text-gray-600">{{ $memo->content }}</p>
                 <div class="mt-4">
                     <!-- Add the Edit button with a link to the edit route -->
-                    <a href="{{ route('memo.edit', ['memo' => $memo]) }}" class="btn btn-primary">Edit</a>
+                    <a href="{{ route('memo.edit', ['memo' => $memo]) }}" class="btn btn-primary hover:bg-indigo-700 hover:text-white rounded-full px-4 py-2">Edit</a>
                 </div>
                 <form action="{{ route('memo.destroy', $memo->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger mt-2">Delete Memo</button>
+                    <button type="submit" class="btn btn-danger hover:bg-red-700 hover:text-white rounded-full px-4 py-2 mt-2">Delete Memo</button>
                 </form>
             </div>
         @endforeach
     </div>
 </div>
+
+
 
 <script src="{{ mix('js/app.js') }}"></script>
 @vite('resources/js/app.js')

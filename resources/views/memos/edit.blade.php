@@ -1,16 +1,21 @@
-Ini isi dari edit.blade
-
 @extends('layouts.app')
 
 @section('content')
 <style>
+    body {
+        background: url('{{ asset('assets/bg.jpg') }}') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0; /* Remove default body margin */
+    }
 
     .card {
         border: 1px solid #e0e0e0;
         border-radius: 10px;
-        margin: 0 auto; 
-        max-width: 500px; 
+        margin: 0 auto;
+        max-width: 500px;
+        background-color: #fff; /* Set a white background color */
     }
+
     
     @media (max-width: 500px) {
         .card {
