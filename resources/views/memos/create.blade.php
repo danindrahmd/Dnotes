@@ -102,17 +102,18 @@
                     <form action="{{ route('memo.store') }}" method="POST">
                         @csrf
                         <div class="form-group row">
-                            <label for="title" class="col-sm-3 col-form-label text-right text-dark">Title</label>
+                            <label for="title" class="col-sm-3 col-form-label text-right text-dark" >Title</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="title" name="title" required>
+                                <input type="text" class="form-control" id="title" name="title" required placeholder="Maybe dates of today?">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="content" class="col-sm-3 col-form-label text-right text-dark">Content</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+                                <textarea class="form-control" id="content" name="content" rows="5" required placeholder="What was on your mind today? Anything happen?"></textarea>
                             </div>
                         </div>
+                        
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary">Save Memo</button>
                         </div>
