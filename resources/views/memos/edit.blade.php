@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<title>DNotes Edit Memo</title>
 @section('content')
 <style>
     body {
