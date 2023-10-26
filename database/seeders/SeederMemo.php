@@ -15,8 +15,8 @@ class SeederMemo extends Seeder
     public function run()
     {
         DB::table('memos')->insert([
-            'title' => 'First interaction',
-            'content' => 'The first time here? come join us!',
+            'title' => 'How to Use this app',
+            'content' => 'You can add more notes and logout by using three dots beside the name, Edit and delete button will be provide for every different notes. Enjoy Take Note',
             'user_id' => 1, // Replace 1 with the actual user_id
         ]);
     
