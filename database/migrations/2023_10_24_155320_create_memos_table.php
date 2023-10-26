@@ -12,9 +12,10 @@ class CreateMemosTable extends Migration
     {
         Schema::create('memos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained(); // Menambahkan foreign key
+            $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->text('content');
+            $table->boolean('pinned')->default(false); // Tambahkan kolom pinned
             $table->timestamps();
         });
     }
