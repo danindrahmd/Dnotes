@@ -18,3 +18,4 @@ class MemoCreated
         $this->memo = $memo;
     }
 }
+

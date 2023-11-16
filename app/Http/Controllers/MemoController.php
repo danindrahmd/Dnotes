@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\MemoCreated;
 use App\Models\Memo;
 
 class MemoController extends Controller
@@ -22,19 +23,22 @@ class MemoController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi data memo
+     
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
         ]);
-
-        // Simpan memo ke database
-        Memo::create([
+    
+      
+        $memo = Memo::create([
             'title' => $request->input('title'),
             'content' => $request->input('content'),
             'user_id' => auth()->id(),
         ]);
-
+    
+        // Trigger the event
+        event(new MemoCreated($memo));
+    
         return redirect()->route('dashboard')->with('success', 'Memo added successfully!');
     }
 
