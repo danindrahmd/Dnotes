@@ -1,19 +1,27 @@
-/.phpunit.cache
-/node_modules
-/public/build
-/public/hot
+# Direktori dan file umum yang tidak perlu disertakan
+/vendor/
+/node_modules/
 /public/storage
 /storage/*.key
-/vendor
+/Homestead.yaml
+/Homestead.json
+/npm-debug.log
+/yarn-error.log
+/yarn.lock
+
+# File konfigurasi lokal
 .env
-.env.backup
-.env.production
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-auth.json
-npm-debug.log
-yarn-error.log
-/.fleet
-/.idea
-/.vscode
+
+# File konfigurasi dan cache lokal dari PHPStorm
+.idea/
+*.iml
+*.iws
+*.ids
+
+# File konfigurasi lokal dari Visual Studio Code
+.vscode/
+
+# File sementara
+Thumbs.db
+Desktop.ini
+.DS_Store
