@@ -7,6 +7,8 @@
     <title>Register</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @vite('resources/css/app.css')
+    <link rel="icon" type="image/png" href="{{ asset('assets/dnotes.png') }}">
+
     <style>
         body {
             background: url('{{ asset('assets/bg.jpg') }}') no-repeat center center fixed;
