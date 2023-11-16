@@ -12,9 +12,13 @@ class Memo extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'content', 'user_id',
+        'user_id',
+        'title',
+        'content',
+        'pinned', // Tambahkan kolom pinned ke daftar fillable
     ];
 
+    // Relasi dengan user
     public function user()
     {
         return $this->belongsTo(User::class);

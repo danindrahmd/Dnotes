@@ -65,7 +65,7 @@
                     <input type="password" name="password" id="password" class="w-full px-3 py-2 border rounded" required>
                 </div>
 
-                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Login</button>
+                <button type="submit" class="bg-blue-500 animate-pulse text-white py-2 px-4 rounded">Login</button>
             </form>
 
             <p class="mt-4 text-sm">Don't have an account? <a href="{{ route('register') }}" class="text-blue-500">Register</a></p>
