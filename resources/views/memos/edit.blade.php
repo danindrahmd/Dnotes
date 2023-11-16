@@ -5,122 +5,113 @@
     body {
         background: url('{{ asset('assets/bg.jpg') }}') no-repeat center center fixed;
         background-size: cover;
-        margin: 0; /* Remove default body margin */
+        margin: 0;
     }
 
     .card {
         border: 1px solid #e0e0e0;
         border-radius: 10px;
-        margin: 0 auto;
+        margin: 20px auto;
+        width: 80%;
         max-width: 500px;
-        background-color: #fff; /* Set a white background color */
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
-    
-    @media (max-width: 500px) {
-        .card {
-            max-width: 100%;
-        }
-        .card-body textarea {
-            width: 95%; 
-        }
-        .card-body input {
-            width: 95%;
-        }
-    }
-    
     .card-header {
-        background-color: #007bff;
+        background: linear-gradient(to right, #007bff, #0056b3);
         color: #fff;
         text-align: center;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        padding: 10px;
+        padding: 15px;
     }
-    
-    .card-footer {
-            background-color: #f0f0f0;
-            padding: 10px;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-    
-        .card-footer a {
-            display: block;
-            text-align: center;
-            background-color: #007bff; 
-            color: #fff; 
-            padding: 10px 0; 
-            border-radius: 5px; 
-            text-decoration: none; 
-            transition: background-color 0.3s; 
-        }
-    
-        .card-footer a:hover {
-            background-color: #0056b3; 
-        }
-    
+
+    .card-header h2 {
+        margin: 0;
+    }
+
     .card-body {
+        flex: 1;
         padding: 20px;
     }
-    
-    
+
     .form-group {
         margin-bottom: 20px;
     }
-    
+
     .form-control {
         border: 1px solid #e0e0e0;
-        border-radius: 5px;
-        padding: 10px;
+        border-radius: 8px;
+        padding: 12px;
+        width: 100%;
     }
-    
+
     .btn-primary {
-        background-color:  #007bff;
+        background-color: #007bff;
         color: #fff;
         border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
+        border-radius: 8px;
+        padding: 12px 24px;
+        cursor: pointer;
     }
-    
+
     .btn-primary:hover {
         background-color: #0056b3;
     }
-    
-        </style>
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="text-center">Edit Memo</h2>
-                </div>
-                <div class="card-body">
-                    <form action="{{ route('memo.update', $memo->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="form-group row">
-                            <label for="title" class="col-sm-3 col-form-label text-right text-dark">Title</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="title" name="title" value="{{ $memo->title }}" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="content" class="col-sm-3 col-form-label text-right text-dark">Content</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control" id="content" name="content" rows="5" required>{{ $memo->content }}</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary">Update Memo</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer">
-                    <a href="{{ route('dashboard') }}" class="btn btn-secondary btn-block">Return to Dashboard</a>
-                </div>
+
+    .card-footer {
+        background-color: #f0f0f0;
+        padding: 15px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .card-footer a {
+        display: block;
+        text-align: center;
+        background-color: #007bff;
+        color: #fff;
+        padding: 12px 0;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .card-footer a:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="card">
+    <div class="card-header">
+        <h2>Edit Memo</h2>
+    </div>
+    <div class="card-body">
+        <form action="{{ route('memo.update', $memo->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ $memo->title }}" required>
             </div>
-        </div>
+
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea class="form-control" id="content" name="content" rows="5" required>{{ $memo->content }}</textarea>
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Update Memo</button>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <a href="{{ route('dashboard') }}" class="btn btn-secondary btn-block">Return to Dashboard</a>
     </div>
 </div>
 @endsection
