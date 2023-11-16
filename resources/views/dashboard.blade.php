@@ -105,17 +105,20 @@
                 <!-- Tambahkan tulisan "Memo" di sini -->
                 <p class="text-blue-500 mt-2">Notes</p>
 
-                <div class="mt-4 flex justify-between items-center">
-                    <div>
-                        <a href="{{ route('memo.edit', ['memo' => $memo]) }}" class="btn btn-primary hover:bg-indigo-700 hover:text-white rounded-full px-4 py-2">Edit</a>
+                <!-- "Edit" and "Delete" buttons below the notes -->
+                <div class="mt-4">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <a href="{{ route('memo.edit', ['memo' => $memo]) }}" class="btn btn-primary hover:bg-indigo-700 hover:text-white rounded-full px-4 py-2">Edit</a>
+                        </div>
+                        <form action="{{ route('memo.destroy', $memo->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger hover:bg-red-700 hover:text-white rounded-full px-4 py-2">
+                                <img src="{{ asset('assets/delete.png') }}" alt="Delete Icon" class="w-4 h-4 mr-2">
+                            </button>
+                        </form>
                     </div>
-                    <form action="{{ route('memo.destroy', $memo->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger hover:bg-red-700 hover:text-white rounded-full px-4 py-2">
-                            <img src="{{ asset('assets/delete.png') }}" alt="Delete Icon" class="w-4 h-4 mr-2">
-                        </button>
-                    </form>
                 </div>
             </div>
         @endforeach
