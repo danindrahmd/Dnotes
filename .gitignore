@@ -25,3 +25,90 @@
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+/.phpunit.cache
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+# Node.js
+/node_modules/
+
+# Composer
+/vendor
+
+# Laravel Mix
+/public/css/
+/public/js/
+/public/mix-manifest.json
+/public/hot
+
+# Laravel storage
+/storage/*.key
+/storage/debugbar
+
+# Laravel Homestead
+Homestead.yaml
+Homestead.json
+
+# Laravel Envoy
+.env.dusk.local
+.env.dusk.testing
+.env.dusk.staging
+.env.dusk.production
+
+# Laravel Dusk
+/storage/screenshots/
+/storage/app/dusk.sqlite
+
+# Laravel Forge
+forge.php
+
+# Laravel Passport
+/storage/oauth-private.key
+/storage/oauth-public.key
+
+# Laravel Spark
+spark-*.key
+
+# PHPUnit
+/phpunit.xml
+/phpunit-*.xml
+
+# Sublime Text
+*.sublime-workspace
+
+# VS Code
+.vscode/
+
+# IDE
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+*.iml
+*.log
+*.tmd
+
+# Laravel Log Files
+/storage/logs/*.log
+
+# Laravel Debugbar
+/debugbar/*
