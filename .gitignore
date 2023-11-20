@@ -112,3 +112,55 @@ Thumbs.db
 
 # Laravel Debugbar
 /debugbar/*
+
+# Ignore the vendor directory
+/vendor/
+
+# Ignore the node_modules directory
+/node_modules/
+
+# Ignore the Homestead.yaml file for Laravel Homestead
+Homestead.yaml
+
+# Ignore environment configuration files
+.env
+
+# Ignore the Laravel Mix temporary directory
+mix-manifest.json
+public/mix-*.js
+public/mix-*.css
+
+# Ignore the storage directory
+/storage/*.key
+/storage/debugbar
+/storage/app/public
+/storage/app/tmp
+/storage/framework/*
+/storage/logs/*
+/storage/*.key
+
+# Ignore the bootstrap cache directory
+bootstrap/cache/
+
+# Ignore the Tailwind CSS cache directory
+.node_modules_cache/
+
+# Ignore PHPUnit testing framework files
+/phpunit.xml
+/tests/
+
+# Ignore PHPStorm project files
+.idea/
+
+# Ignore database configuration files
+/database/*.sqlite
+/database/*.sql
+
+# Ignore Homestead VM files
+Homestead.json
+Vagrantfile
+
+# Ignore the composer's vendor directory
+/vendor/bin/
+/vendor/laravel/
+
