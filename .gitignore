@@ -1,3 +1,31 @@
+# Direktori dan file umum yang tidak perlu disertakan
+/vendor/
+/node_modules/
+/public/storage
+/storage/*.key
+/Homestead.yaml
+/Homestead.json
+/npm-debug.log
+/yarn-error.log
+/yarn.lock
+
+# File konfigurasi lokal
+.env
+
+# File konfigurasi dan cache lokal dari PHPStorm
+.idea/
+*.iml
+*.iws
+*.ids
+
+# File konfigurasi lokal dari Visual Studio Code
+.vscode/
+
+# File sementara
+Thumbs.db
+Desktop.ini
+.DS_Store
+
 /.phpunit.cache
 /node_modules
 /public/build
@@ -17,3 +45,122 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+# Node.js
+/node_modules/
+
+# Composer
+/vendor
+
+# Laravel Mix
+/public/css/
+/public/js/
+/public/mix-manifest.json
+/public/hot
+
+# Laravel storage
+/storage/*.key
+/storage/debugbar
+
+# Laravel Homestead
+Homestead.yaml
+Homestead.json
+
+# Laravel Envoy
+.env.dusk.local
+.env.dusk.testing
+.env.dusk.staging
+.env.dusk.production
+
+# Laravel Dusk
+/storage/screenshots/
+/storage/app/dusk.sqlite
+
+# Laravel Forge
+forge.php
+
+# Laravel Passport
+/storage/oauth-private.key
+/storage/oauth-public.key
+
+# Laravel Spark
+spark-*.key
+
+# PHPUnit
+/phpunit.xml
+/phpunit-*.xml
+
+# Sublime Text
+*.sublime-workspace
+
+# VS Code
+.vscode/
+
+# IDE
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+*.iml
+*.log
+*.tmd
+
+# Laravel Log Files
+/storage/logs/*.log
+
+# Laravel Debugbar
+/debugbar/*
+
+# Ignore the vendor directory
+/vendor/
+
+# Ignore the node_modules directory
+/node_modules/
+
+# Ignore the Homestead.yaml file for Laravel Homestead
+Homestead.yaml
+
+# Ignore environment configuration files
+.env
+
+# Ignore the Laravel Mix temporary directory
+mix-manifest.json
+public/mix-*.js
+public/mix-*.css
+
+# Ignore the storage directory
+/storage/*.key
+/storage/debugbar
+/storage/app/public
+/storage/app/tmp
+/storage/framework/*
+/storage/logs/*
+/storage/*.key
+
+# Ignore the bootstrap cache directory
+bootstrap/cache/
+
+# Ignore the Tailwind CSS cache directory
+.node_modules_cache/
+
+# Ignore PHPUnit testing framework files
+/phpunit.xml
+/tests/
+
+# Ignore PHPStorm project files
+.idea/
+
+# Ignore database configuration files
+/database/*.sqlite
+/database/*.sql
+
+# Ignore Homestead VM files
+Homestead.json
+Vagrantfile
+
+# Ignore the composer's vendor directory
+/vendor/bin/
+/vendor/laravel/
+
