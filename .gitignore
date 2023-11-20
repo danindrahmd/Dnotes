@@ -36,26 +36,10 @@
 # Ignore Laravel Homestead and Vagrant files
 Homestead.yaml
 Homestead.json
-Vagrantfile
-
-# Ignore database files
-/database/*.sqlite
-/database/*.sql
-
-# Ignore Laravel Passport, Spark, and Dusk files
-/storage/oauth-private.key
-/storage/oauth-public.key
-/storage/screenshots/
-/storage/app/dusk.sqlite
-spark-*.key
-.env.dusk.local
-.env.dusk.testing
-.env.dusk.staging
-.env.dusk.production
-
-# Ignore user-specific files and OS-generated files
-*.iml
-*.log
-*.tmd
-.DS_Store
-Thumbs.db
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode

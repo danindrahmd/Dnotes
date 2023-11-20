@@ -1,13 +1,12 @@
-<!-- resources/views/dashboard.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DNotes Dashboard</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @vite('resources/css/app.css')
+    <link rel="icon" type="image/png" href="{{ asset('assets/dnotes.png') }}">
     <style>
         body {
             background: url('{{ asset('assets/bg.jpg') }}') no-repeat center center fixed;
@@ -83,31 +82,44 @@
 <div class="container mx-auto mt-8">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach($memos as $memo)
-            <div class="bg-white p-6 rounded-lg shadow-md {{ $memo->pinned ? 'border-2 border-yellow-500' : '' }}">
-                <h3 class="text-xl font-semibold mb-4">{{ $memo->title }}</h3>
-                <p class="text-gray-600 memo-content">{{ $memo->content }}</p>
-                <p class="text-gray-500 mt-2">Created at: {{ $memo->created_at->format('Y-m-d H:i:s') }}</p>
-                <!-- Tambahkan tulisan "Memo" di sini -->
-                <p class="text-blue-500 mt-2">Memo</p>
-                <div class="mt-4">
-                    <a href="{{ route('memo.edit', ['memo' => $memo]) }}" class="btn btn-primary hover:bg-indigo-700 hover:text-white rounded-full px-4 py-2">Edit</a>
-                </div>
-                <form action="{{ route('memo.destroy', $memo->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger hover:bg-red-700 hover:text-white rounded-full px-4 py-2 mt-2">Delete Memo</button>
-                </form>
+            <div class="relative bg-white p-6 rounded-lg shadow-md {{ $memo->pinned ? 'border-2 border-yellow-500' : '' }}">
                 @if ($memo->pinned)
                     <form action="{{ route('memo.unpin', $memo->id) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-warning hover:bg-yellow-500 hover:text-white rounded-full px-4 py-2 mt-2">Unpin Memo</button>
+                        <button type="submit" class="btn btn-warning hover:bg-yellow-500 hover:text-white rounded-full px-4 py-2 absolute top-0 right-0 mt-2 mr-2">
+                            <img src="{{ asset('assets/pin.png') }}" alt="Pin Icon" class="w-4 h-4 mr-2">
+                        </button>
                     </form>
                 @else
                     <form action="{{ route('memo.pin', $memo->id) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-secondary hover:bg-yellow-500 hover:text-white rounded-full px-4 py-2 mt-2">Pin Memo</button>
+                        <button type="submit" class="btn btn-secondary hover:bg-yellow-500 hover:text-white rounded-full px-4 py-2 absolute top-0 right-0 mt-2 mr-2">
+                            <img src="{{ asset('assets/pin.png') }}" alt="Pin Icon" class="w-4 h-4 mr-2">
+                        </button>
                     </form>
                 @endif
+
+                <h3 class="text-xl font-semibold mb-4">{{ $memo->title }}</h3>
+                <p class="text-gray-600 memo-content">{{ $memo->content }}</p>
+                <p class="text-gray-500 mt-2">Created at: {{ $memo->created_at->format('Y-m-d H:i:s') }}</p>
+                <!-- Tambahkan tulisan "Memo" di sini -->
+                <p class="text-blue-500 mt-2">Notes</p>
+
+                <!-- "Edit" and "Delete" buttons below the notes -->
+                <div class="mt-4">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <a href="{{ route('memo.edit', ['memo' => $memo]) }}" class="btn btn-primary hover:bg-indigo-700 hover:text-white rounded-full px-4 py-2">Edit</a>
+                        </div>
+                        <form action="{{ route('memo.destroy', $memo->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger hover:bg-red-700 hover:text-white rounded-full px-4 py-2">
+                                <img src="{{ asset('assets/delete.png') }}" alt="Delete Icon" class="w-4 h-4 mr-2">
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         @endforeach
     </div>
