@@ -1,10 +1,18 @@
 <?php
+// routes/web.php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MemoController;
 use App\Http\Controllers\ToDoController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\BroadcastController;
 
+Route::get('/broadcast/create', [BroadcastController::class, 'create'])->name('broadcast.create');
+Route::post('/broadcast/store', [BroadcastController::class, 'store'])->name('broadcast.store');
 
+Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications');
+Route::post('/broadcast-notification', [NotificationController::class, 'broadcast'])->name('broadcast.notification');
 
 // Rute untuk login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -17,12 +25,7 @@ Route::post('/register', [AuthController::class, 'register']);
 // Rute yang memerlukan autentikasi
 Route::middleware(['auth'])->group(function () {
     // Rute dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    // routes/web.php
     Route::get('/dashboard', [MemoController::class, 'index'])->name('dashboard');
-
 
     // Rute untuk memo
     Route::get('/memo/create', [MemoController::class, 'create'])->name('memo.create');
@@ -32,7 +35,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/memo/{memo}', [MemoController::class, 'update'])->name('memo.update');
     Route::post('/memo/{id}/pin', [MemoController::class, 'pin'])->name('memo.pin');
     Route::post('/memo/{id}/unpin', [MemoController::class, 'unpin'])->name('memo.unpin');
-
 
     // Rute untuk logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

@@ -116,6 +116,13 @@
                 <label for="content">Content</label>
                 <textarea class="form-control" id="content" name="content" rows="5" required placeholder="Write your memo content"></textarea>
             </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status">
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                </select>
+            </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary">Save Memo</button>
             </div>
