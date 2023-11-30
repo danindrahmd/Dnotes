@@ -1,7 +1,5 @@
-<!-- resources/views/memos/create.blade.php -->
-
 @extends('layouts.app')
-<title>DNotes Create Memo</title>
+<title>Notifications</title>
 
 @section('content')
 <style>
@@ -24,20 +22,8 @@
         flex-direction: column;
     }
 
-    @media (max-width: 500px) {
-        .card {
-            max-width: 100%;
-        }
-        .card-body textarea {
-            width: 95%;
-        }
-        .card-body input {
-            width: 95%;
-        }
-    }
-
     .card-header {
-        background-color: #007bff;
+        background: linear-gradient(to right, #007bff, #0056b3);
         color: #fff;
         text-align: center;
         border-top-left-radius: 10px;
@@ -101,29 +87,11 @@
     }
 </style>
 
-<div class="card">
-    <div class="card-header">
-        <h2>Create Memo</h2>
-    </div>
-    <div class="card-body">
-        <form action="{{ route('memo.store') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" name="title" required placeholder="Enter memo title">
-            </div>
-            <div class="form-group">
-                <label for="content">Content</label>
-                <textarea class="form-control" id="content" name="content" rows="5" required placeholder="Write your memo content"></textarea>
-            </div>
-            <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary">Save Memo</button>
-            </div>
-        </form>
-    </div>
-    <div class="card-footer">
-        <a href="{{ route('dashboard') }}" class="btn btn-secondary btn-block">Return to Dashboard</a>
-    </div>
-</div>
-
+    <h1>Notifications</h1>
+    @foreach ($memos as $memo)
+        <div>
+            <h3>{{ $memo->title }}</h3>
+            <p>{{ $memo->content }}</p>
+        </div>
+    @endforeach
 @endsection
