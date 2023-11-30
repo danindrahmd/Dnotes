@@ -99,10 +99,13 @@
                     </form>
                 @endif
 
+
                 <h3 class="text-xl font-semibold mb-4">{{ $memo->title }}</h3>
+
                 <p class="text-gray-600 memo-content">{{ $memo->content }}</p>
-                <p class="text-gray-500 mt-2">Created at: {{ $memo->created_at->format('Y-m-d H:i:s') }}</p>
-                <!-- Tambahkan tulisan "Memo" di sini -->
+                
+                <p class="text-gray-500 mt-2">Created at: {{ optional($memo->created_at)->format('Y-m-d H:i:s') }}</p>
+                 <!-- Tambahkan tulisan "Memo" di sini -->
                 <p class="text-blue-500 mt-2">Notes</p>
 
                 <!-- "Edit" and "Delete" buttons below the notes -->
