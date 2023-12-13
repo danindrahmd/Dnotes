@@ -12,8 +12,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('post:new-note')->everyFifteenMinutes(); // Adjust the frequency as needed
     }
+    
 
     /**
      * Register the commands for the application.
@@ -21,7 +22,11 @@ class Kernel extends ConsoleKernel
     protected function commands(): void
     {
         $this->load(__DIR__.'/Commands');
+    
+        $this->call('post:new-note');
+  
 
         require base_path('routes/console.php');
     }
 }
+ 

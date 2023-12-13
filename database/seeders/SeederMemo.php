@@ -10,8 +10,6 @@ class SeederMemo extends Seeder
     /**
      * Run the database seeds.
      */
-
-
     public function run()
     {
         DB::table('memos')->insert([
