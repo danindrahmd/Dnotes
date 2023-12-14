@@ -35,6 +35,8 @@
             z-index: 1;
             min-width: 160px;
             border-radius: 4px;
+            right: 0; /* Align dropdown to the right */
+
         }
 
         .dropdown:hover .dropdown-content {
