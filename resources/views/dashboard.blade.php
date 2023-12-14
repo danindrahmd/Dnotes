@@ -17,6 +17,9 @@
 
         .nav-container {
             background-color: rgba(255, 255, 255, 0.8);
+            width: 100%;
+            max-width: 100%; /* Ensure it doesn't exceed the viewport width */
+            margin: 0 auto; /* Center the container horizontally */
         }
 
         .dropdown {
@@ -42,6 +45,38 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
+        body.dark-mode {
+            background: url('{{ asset('assets/bg2.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            color: #fff; /* Adjust the text color for dark mode */
+        }
+
+        .dark-mode .nav-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            max-width: 100%;
+            margin: 0; /* Remove any margin in dark mode */
+        }
+
+        .dark-mode .memo-content,
+        .dark-mode .text-gray-600,
+        .dark-mode .text-xl {
+            color: #fff; /* Adjust the text color for specific elements in dark mode */
+        }
+
+        .dark-mode .dark-text-black {
+            color: #000; /* Adjust the text color for the specified element in dark mode */
+        }
+        .dark-mode .relative {
+            background-color: grey; /* Change to the desired dark mode background color */
+            /* Add any additional styles for dark mode */
+        }
+        .dark-mode .edit-button,
+        .dark-mode .created-at {
+            color: #fff; /* Change the text color for the specified elements in dark mode */
+        }
     </style>
 </head>
 
@@ -56,7 +91,9 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <span class="text-gray-600">Welcome, {{ auth()->user()->name }}!</span>
-
+                    <button id="dark-mode-toggle" class="btn btn-primary">
+                        <img id="dark-mode-image" src="{{ asset('assets/nm.png') }}" alt="Toggle Dark Mode" class="w-4 h-4 mr-2">
+                    </button>
                     <div class="dropdown">
                         <button type="button" class="btn btn-primary">
                             <img src="{{ asset('assets/more.png') }}" alt="Add Memo" class="w-4 h-4 mr-2">
@@ -65,9 +102,9 @@
                             <a href="{{ route('memo.create') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
                                 Add Notes
                             </a>
-                            <a href="{{ route('todo.create') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                            <!-- <a href="{{ route('todo.create') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
                                 Add To-Do List
-                            </a>
+                            </a> -->
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
@@ -76,12 +113,9 @@
                             </form>
                         </div>
                     </div>
-
-                    <!-- Notification icon and link -->
-                    <a href="{{ route('notifications') }}" class="text-gray-600 hover:text-gray-800">
+                    <!-- <a href="{{ route('notifications') }}" class="text-gray-600 hover:text-gray-800">
                         <img src="{{ asset('assets/notification.png') }}" alt="Notifications" class="w-6 h-6">
-                        <!-- You can add a badge for unread notifications if needed -->
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </div>
@@ -90,7 +124,7 @@
     <div class="container mx-auto mt-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach($memos as $memo)
-            <div class="relative bg-white p-6 rounded-lg shadow-md {{ $memo->pinned ? 'border-2 border-yellow-500' : '' }}">
+            <div class="relative bg-white p-6 rounded-lg shadow-md {{ $memo->pinned ? 'border-2 border-yellow-500' : '' }} dark-text-black">
                 @if ($memo->pinned)
                 <form action="{{ route('memo.unpin', $memo->id) }}" method="POST">
                     @csrf
@@ -112,7 +146,7 @@
 
                 <p class="text-gray-600 memo-content">{{ $memo->content }}</p>
 
-                <p class="text-gray-500 mt-2">Created at: {{ optional($memo->created_at)->format('Y-m-d H:i:s') }}</p>
+                <p class="created-at text-gray-500 mt-2">Created at: {{ optional($memo->created_at)->format('Y-m-d H:i:s') }}</p>
                 <!-- Tambahkan tulisan "Memo" di sini -->
                 <p class="text-blue-500 mt-2">Notes</p>
 
@@ -120,13 +154,13 @@
                 <div class="mt-4">
                     <div class="flex justify-between items-center">
                         <div>
-                            <a href="{{ route('memo.edit', ['memo' => $memo]) }}" class="btn btn-primary hover:bg-indigo-700 hover:text-white rounded-full px-4 py-2">Edit</a>
+                            <a href="{{ route('memo.edit', ['memo' => $memo]) }}" class="edit-button btn btn-primary hover:bg-indigo-700 hover:text-white rounded-full px-4 py-2">Edit</a>
                         </div>
                         <form action="{{ route('memo.destroy', $memo->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger hover:bg-red-700 hover:text-white rounded-full px-4 py-2">
-                                <img src="{{ asset('assets/delete.png') }}" alt="Delete Icon" class="w-4 h-4 mr-2">
+                                <img id="delete-image" src="{{ asset('assets/delete.png') }}" alt="Delete Icon" class="w-4 h-4 mr-2">
                             </button>
                         </form>
                     </div>
@@ -154,4 +188,54 @@
         });
     </script>
 
-</body
+    <script>
+        document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+
+                    // Update toggle button image based on dark mode status
+            const darkModeImage = document.getElementById('dark-mode-image');
+            darkModeImage.src = document.body.classList.contains('dark-mode') ? '{{ asset('assets/nm2.png') }}' : '{{ asset('assets/nm.png') }}';
+
+            // Update pinned button image based on dark mode status
+            const pinnedImage = document.getElementById('pinned-image');
+            pinnedImage.src = document.body.classList.contains('dark-mode') ? '{{ asset('assets/pin2.png') }}' : '{{ asset('assets/pin.png') }}';
+
+            // Update delete button image based on dark mode status
+            const deleteImage = document.getElementById('delete-image');
+            deleteImage.src = document.body.classList.contains('dark-mode') ? '{{ asset('assets/delete2.png') }}' : '{{ asset('assets/delete.png') }}';
+
+
+            // Update background image and note colors based on dark mode status
+            if (document.body.classList.contains('dark-mode')) {
+                document.body.style.backgroundImage = "url('{{ asset('assets/bg2.jpg') }}')";
+                // Additional styles for dark mode notes
+                document.querySelectorAll('.memo-content').forEach(function (note) {
+                    note.style.color = '#fff'; // Change note text color in dark mode
+                });
+            } else {
+                document.body.style.backgroundImage = "url('{{ asset('assets/bg.jpg') }}')";
+                // Additional styles for light mode notes
+                document.querySelectorAll('.memo-content').forEach(function (note) {
+                    note.style.color = '#000'; // Change note text color in light mode
+                });
+            }
+
+            // Store user preference (optional)
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('dark-mode-preference', isDarkMode ? 'dark' : 'light');
+        });
+
+        // Apply dark mode based on user preference on page load
+        const userPreference = localStorage.getItem('dark-mode-preference');
+        if (userPreference === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.body.style.backgroundImage = "url('{{ asset('assets/bg2.jpg') }}')";
+            document.querySelectorAll('.memo-content').forEach(function (note) {
+                note.style.color = '#fff';
+            });
+        }
+    </script>
+
+</body>
+</html>
+
